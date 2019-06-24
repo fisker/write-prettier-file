@@ -1,0 +1,73 @@
+{
+  "name": "write-prettier-file",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "import-cwd": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@commitlint/cli": "^8.0.0",
+    "@fisker/commitlint-config": "^1.1.0",
+    "@fisker/eslint-config": "^1.2.0",
+    "@fisker/husky-config": "^1.1.0",
+    "@fisker/lint-staged-config": "^1.0.4",
+    "@fisker/prettier-config": "^1.0.17",
+    "ava": "^2.1.0",
+    "babel-plugin-transform-async-to-promises": "^0.8.12",
+    "cz-conventional-changelog-emoji": "^0.1.0",
+    "dedent": "^0.7.0",
+    "eslint": "^6.0.0",
+    "esm": "^3.2.25",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
+    "markdownlint-cli": "^0.17.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.16.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-filesize": "^6.1.1",
+    "rollup-plugin-node-resolve": "^5.0.4",
+    "rollup-plugin-prettier": "^0.6.0",
+    "tempy": "^0.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-emoji"
+    }
+  },
+  "scripts": {
+    "build": "rollup --config",
+    "clean": "rimraf lib",
+    "dist": "run-p dist:*",
+    "dist:npm": "np --yolo --no-yarn",
+    "format": "run-p format:*",
+    "format:eslint": "yarn lint:eslint --fix",
+    "format:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --write",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
+    "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
+    "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
+    "release": "run-s clean lint build test format dist",
+    "test": "ava"
+  },
+  "author": {
+    "name": "fisker Cheung",
+    "email": "lionkay@gmail.com",
+    "url": "https://www.fiskercheung.com/"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "sideEffects": false,
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "verbose": true
+  }
+}
