@@ -6,6 +6,11 @@
   "dependencies": {
     "import-cwd": "^3.0.0"
   },
+  "repository": "https://github.com/fisker/write-prettier-file",
+  "home": "https://github.com/fisker/write-prettier-file#readme",
+  "bugs": {
+    "url": "https://github.com/fisker/write-prettier-file/issues"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.4.5",
     "@commitlint/cli": "^8.0.0",
