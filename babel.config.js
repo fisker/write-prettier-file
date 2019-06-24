@@ -1,14 +1,14 @@
 module.exports = {
   presets: [
     [
-      "@babel/env",
+      '@babel/env',
       {
         // debug: true,
-        exclude: ["transform-typeof-symbol", "transform-async-to-generator"],
+        exclude: ['transform-typeof-symbol', 'transform-async-to-generator'],
         // useBuiltIns: 'usage',
-        modules: false
-      }
-    ]
+        modules: false,
+      },
+    ],
   ],
-  plugins: ["babel-plugin-transform-async-to-promises"]
+  plugins: ['babel-plugin-transform-async-to-promises'],
 }

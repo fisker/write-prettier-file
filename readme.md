@@ -11,9 +11,9 @@ yarn add write-prettier-file
 ## Ustage
 
 ```js
-const writePrettierFile = require("write-prettier-file")
+const writePrettierFile = require('write-prettier-file')
 
-writePrettierFile("example.js", `hello('world');`)
+writePrettierFile('example.js', `hello('world');`)
 ```
 
 ## API

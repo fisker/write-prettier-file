@@ -1,26 +1,26 @@
-import { dirname, join } from "path"
-import importPrettier from "./import-prettier"
-import { writeFileSync, writeFile } from "./fs-promises"
+import {dirname, join} from 'path'
+import importPrettier from './import-prettier'
+import {writeFileSync, writeFile} from './fs-promises'
 
 async function writePrettierFile(file, data, options = {}) {
   options = {
     loadConfig: true,
     formatWithCursor: false,
-    ...options
+    ...options,
   }
 
   const prettier = importPrettier([
     dirname(file),
     process.cwd(),
-    join(__dirname, "..")
+    join(__dirname, '..'),
   ])
 
   const config = await prettier.resolveConfig(file, options)
   const formatted = prettier[
-    options.formatWithCursor ? "formatWithCursor" : "format"
+    options.formatWithCursor ? 'formatWithCursor' : 'format'
   ](data, {
     ...config,
-    ...options
+    ...options,
   })
   const result = await writeFile(file, formatted, options)
   return result
@@ -30,21 +30,21 @@ function writePrettierFileSync(file, data, options) {
   options = {
     loadConfig: true,
     formatWithCursor: false,
-    ...options
+    ...options,
   }
 
   const prettier = importPrettier([
     dirname(file),
     process.cwd(),
-    join(__dirname, "..")
+    join(__dirname, '..'),
   ])
 
   const config = prettier.resolveConfig.sync(file, options)
   const formatted = prettier[
-    options.formatWithCursor ? "formatWithCursor" : "format"
+    options.formatWithCursor ? 'formatWithCursor' : 'format'
   ](data, {
     ...config,
-    ...options
+    ...options,
   })
   const result = writeFileSync(file, formatted, options)
   return result

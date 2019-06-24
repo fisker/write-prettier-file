@@ -1,3 +1,6 @@
 {
-  "extends": ["@fisker", ":assignee(fisker)"]
+  "extends": [
+    "@fisker",
+    ":assignee(fisker)"
+  ]
 }
