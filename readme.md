@@ -23,6 +23,7 @@ writePrettierFile('example.js', `hello('world');`)
 - `file` path to file
 - `data` source code, you want to format
 - `options` Object
+  - `write` set to `false` returns formatted code instead of write to file, Default `true`
   - `loadConfig` should resolve config, Default `true`
   - `formatWithCursor` should formatWithCursor, Default `false`
   - any options [`fs.writeFile`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) takes
