@@ -1,7 +1,7 @@
 {
   "name": "write-prettier-file",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "dependencies": {
     "import-cwd": "^3.0.0"
@@ -69,5 +69,8 @@
       "esm"
     ],
     "verbose": true
-  }
+  },
+  "files": [
+    "lib"
+  ]
 }
