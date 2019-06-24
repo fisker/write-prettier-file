@@ -1,10 +1,11 @@
 {
   "name": "write-prettier-file",
+  "description": "write prettier formatted file",
   "version": "1.0.0",
   "main": "lib/index.js",
   "license": "MIT",
   "dependencies": {
-    "import-cwd": "^3.0.0"
+    "import-from": "^3.0.0"
   },
   "repository": "https://github.com/fisker/write-prettier-file",
   "home": "https://github.com/fisker/write-prettier-file#readme",
