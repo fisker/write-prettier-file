@@ -5152,10 +5152,10 @@ rollup-plugin-filesize@^6.1.1:
     gzip-size "^5.1.1"
     terser "^4.0.0"
 
-rollup-plugin-node-resolve@^5.0.4:
-  version "5.0.4"
-  resolved "https://registry.npm.taobao.org/rollup-plugin-node-resolve/download/rollup-plugin-node-resolve-5.0.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Frollup-plugin-node-resolve%2Fdownload%2Frollup-plugin-node-resolve-5.0.4.tgz#9a09f63618fb1ac46e37cf4e5a13c390b19451af"
-  integrity sha1-mgn2Nhj7GsRuN89OWhPDkLGUUa8=
+rollup-plugin-node-resolve@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-node-resolve/-/rollup-plugin-node-resolve-5.1.0.tgz#49608b6ecaf2b776ab83e317d39b282d65d21b76"
+  integrity sha512-2hwwHNj0s8UEtUNT+lJq8rFWEznP7yJm3GCHBicadF6hiNX1aRARRZIjz2doeTlTGg/hOvJr4C/8+3k9Y/J5Hg==
   dependencies:
     "@types/resolve" "0.0.8"
     builtin-modules "^3.1.0"
