@@ -18,19 +18,36 @@ writePrettierFile('example.js', `hello('world');`)
 
 ## API
 
-### writePrettierFile(file, data[, options])
+### writePrettierFile(file, data, options?)
 
-- `file` path to file
-- `data` source code, you want to format
-- `options` Object
-  - `write` set to `false` returns formatted code instead of write to file, Default `true`
-  - `loadConfig` should resolve config, Default `true`
-  - `formatWithCursor` should formatWithCursor, Default `false`
-  - any options [`fs.writeFile`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback) takes
-  - any options [`prettier.resolveConfig`](https://prettier.io/docs/en/api.html#prettierresolveconfigfilepath-options) takes
-  - any options [`prettier.format`](https://prettier.io/docs/en/api.html#prettierformatsource-options) and [`prettier.formatWithCursor`](https://prettier.io/docs/en/api.html#prettierformatwithcursorsource-options) takes
-- Returns: `Promise`
+#### file
 
-### writePrettierFile.sync(file, data[, options])
+Type: `string`
 
-sync version
+Path to file.
+
+#### data
+
+Type: `string`
+
+Source code, you want to format
+
+#### options
+
+Type: `object`
+
+any value [`prettier-format`](https://github.com/fisker/prettier-format) takes
+
+#### options.resolveConfig
+
+Type: `boolean`
+
+Set to `false` to prevent load config.
+
+### writePrettierFile.sync(file, data, options?)
+
+Sync version.
+
+## Related
+
+- [prettier-format](prettier-format) run prettier on code.

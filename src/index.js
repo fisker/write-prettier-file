@@ -1,70 +1,49 @@
-import {dirname, join} from 'path'
+import path from 'path'
 import fs from 'fs-extra'
-import importPrettier from './import-prettier'
+import format from 'prettier-format'
 
 const defaultOptions = {
-  write: true,
-  loadConfig: true,
-  formatWithCursor: false,
+  resolveConfig: true,
+}
+
+async function writeFile(file, data, options) {
+  await fs.ensureDir(path.dirname(file))
+  return fs.writeFile(file, data, options)
+}
+
+function writeFileSync(file, data, options) {
+  fs.ensureDirSync(path.dirname(file))
+  return fs.writeFileSync(file, data, options)
 }
 
 async function writePrettierFile(file, data, options = {}) {
   options = {
+    filePath: file,
     ...defaultOptions,
     ...options,
   }
 
-  const directory = dirname(file)
-
-  const prettier = importPrettier([
-    directory,
-    process.cwd(),
-    join(__dirname, '..'),
-  ])
-
-  const config = await prettier.resolveConfig(file, options)
-  const formatted = prettier[
-    options.formatWithCursor ? 'formatWithCursor' : 'format'
-  ](data, {
-    ...config,
-    ...options,
-  })
-
-  if (options.write) {
-    await fs.ensureDir(directory)
-    return fs.writeFile(file, formatted, options)
+  if (!options.resolveConfig) {
+    delete options.filePath
   }
 
-  return formatted
+  const formatted = await format(data, options)
+  return writeFile(file, formatted, options)
 }
 
 function writePrettierFileSync(file, data, options) {
   options = {
+    filePath: file,
     ...defaultOptions,
     ...options,
   }
-  const directory = dirname(file)
 
-  const prettier = importPrettier([
-    directory,
-    process.cwd(),
-    join(__dirname, '..'),
-  ])
-
-  const config = prettier.resolveConfig.sync(file, options)
-  const formatted = prettier[
-    options.formatWithCursor ? 'formatWithCursor' : 'format'
-  ](data, {
-    ...config,
-    ...options,
-  })
-
-  if (options.write) {
-    fs.ensureDirSync(directory)
-    return fs.writeFileSync(file, formatted, options)
+  if (!options.resolveConfig) {
+    delete options.filePath
   }
 
-  return formatted
+  const formatted = format.sync(data, options)
+  return writeFileSync(file, formatted, options)
 }
 
 writePrettierFile.sync = writePrettierFileSync
