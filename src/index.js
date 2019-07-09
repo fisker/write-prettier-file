@@ -1,6 +1,6 @@
 import {dirname, join} from 'path'
+import fs from 'fs-extra'
 import importPrettier from './import-prettier'
-import {writeFileSync, writeFile} from './fs-promises'
 
 const defaultOptions = {
   write: true,
@@ -14,8 +14,10 @@ async function writePrettierFile(file, data, options = {}) {
     ...options,
   }
 
+  const directory = dirname(file)
+
   const prettier = importPrettier([
-    dirname(file),
+    directory,
     process.cwd(),
     join(__dirname, '..'),
   ])
@@ -28,7 +30,12 @@ async function writePrettierFile(file, data, options = {}) {
     ...options,
   })
 
-  return options.write ? writeFile(file, formatted, options) : formatted
+  if (options.write) {
+    await fs.ensureDir(directory)
+    return fs.writeFile(file, formatted, options)
+  }
+
+  return formatted
 }
 
 function writePrettierFileSync(file, data, options) {
@@ -36,9 +43,10 @@ function writePrettierFileSync(file, data, options) {
     ...defaultOptions,
     ...options,
   }
+  const directory = dirname(file)
 
   const prettier = importPrettier([
-    dirname(file),
+    directory,
     process.cwd(),
     join(__dirname, '..'),
   ])
@@ -51,7 +59,12 @@ function writePrettierFileSync(file, data, options) {
     ...options,
   })
 
-  return options.write ? writeFileSync(file, formatted, options) : formatted
+  if (options.write) {
+    fs.ensureDirSync(directory)
+    return fs.writeFileSync(file, formatted, options)
+  }
+
+  return formatted
 }
 
 writePrettierFile.sync = writePrettierFileSync
