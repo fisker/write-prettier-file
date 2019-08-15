@@ -23,7 +23,7 @@
     "@fisker/prettier-config": "^1.0.18",
     "ava": "^2.2.0",
     "babel-plugin-transform-async-to-promises": "^0.8.14",
-    "cz-conventional-changelog-emoji": "^0.1.0",
+    "cz-conventional-changelog": "3.0.2",
     "dedent": "^0.7.0",
     "eslint": "^6.1.0",
     "esm": "^3.2.25",
@@ -43,7 +43,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog-emoji"
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "scripts": {
