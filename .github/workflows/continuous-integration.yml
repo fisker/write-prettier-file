@@ -31,15 +31,10 @@ jobs:
           version: ${{ matrix.node-version }}
 
       - name: Install
-        run: |
-          npm install --global nyc
-          yarn
+        run: npm install --global nyc && yarn
 
       - name: Run lint, build and test-coverage
-        run: |
-          yarn lint
-          yarn build
-          yarn test-coverage
+        run: yarn lint && yarn build && yarn test-coverage
 
       - name: Upload Coverage
         uses: coverallsapp/github-action@master
