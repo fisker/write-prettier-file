@@ -1,42 +1,74 @@
 name: Test
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
-  test:
-    name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
+  lint:
     strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
-        node-version:
-          - 10.x
-          - 12.x
-
+      fail-fast: false
+    name: Lint
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@master
         with:
           fetch-depth: 1
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@master
         with:
-          version: ${{ matrix.node-version }}
+          node-version: 10.x
 
-      - name: Install
-        run: npm install --global nyc && yarn
+      - name: Install Dependencies
+        run: yarn
 
-      - name: Run lint, build and test-coverage
-        run: yarn lint && yarn build && yarn test-coverage
+      - name: Run Lint
+        run: yarn lint
+
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        PLATFORM:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+        NODE:
+          - 12.x
+          - 10.x
+        # exclude:
+        #   - PLATFORM: macos-latest
+        #     NODE: 12.x
+        #   - PLATFORM: windows-latest
+        #     NODE: 12.x
+
+    name: Test on node ${{ matrix.NODE }} and ${{ matrix.PLATFORM }}
+
+    runs-on: ${{ matrix.PLATFORM }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.NODE }}
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build Package
+        run: yarn build
+
+      - name: Run Test
+        run: yarn test-coverage
 
       - name: Upload Coverage
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.github_token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
