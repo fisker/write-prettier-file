@@ -5,8 +5,9 @@
   "main": "lib/index.js",
   "license": "MIT",
   "dependencies": {
-    "fs-extra": "8.1.0",
-    "prettier-format": "1.0.0"
+    "make-dir": "3.0.0",
+    "prettier-format": "1.0.0",
+    "write-file-atomic": "3.0.0"
   },
   "repository": "fisker/write-prettier-file",
   "home": "https://github.com/fisker/write-prettier-file#readme",
@@ -27,6 +28,7 @@
     "dedent": "0.7.0",
     "eslint": "6.2.2",
     "esm": "3.2.25",
+    "fs-extra": "8.1.0",
     "husky": "3.0.4",
     "lint-staged": "9.2.5",
     "markdownlint-cli": "0.18.0",

@@ -1,5 +1,6 @@
 import path from 'path'
-import fs from 'fs-extra'
+import makeDirectory from 'make-dir'
+import writeFileAtomic from 'write-file-atomic'
 import format from 'prettier-format'
 
 const defaultOptions = {
@@ -7,13 +8,13 @@ const defaultOptions = {
 }
 
 async function writeFile(file, data, options) {
-  await fs.ensureDir(path.dirname(file))
-  return fs.writeFile(file, data, options)
+  await makeDirectory(path.dirname(file))
+  return writeFileAtomic(file, data, options)
 }
 
 function writeFileSync(file, data, options) {
-  fs.ensureDirSync(path.dirname(file))
-  return fs.writeFileSync(file, data, options)
+  makeDirectory.sync(path.dirname(file))
+  return writeFileAtomic.sync(file, data, options)
 }
 
 async function writePrettierFile(file, data, options = {}) {
