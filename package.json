@@ -36,10 +36,6 @@
     "rimraf": "3.0.0",
     "rollup": "1.26.0",
     "rollup-plugin-babel": "4.3.3",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-filesize": "6.2.1",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-prettier": "0.6.0",
     "tempy": "0.3.0"
   },
   "config": {
@@ -54,7 +50,8 @@
     "dist:npm": "np --yolo --no-yarn",
     "format": "run-p format:*",
     "format:eslint": "yarn lint:eslint --fix",
-    "format:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --write",
+    "format:markdown": "yarn lint:markdown --fix",
+    "format:prettier": "yarn lint:prettier --write",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
     "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
