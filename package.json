@@ -6,7 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "8.1.0",
-    "prettier-format": "1.0.0"
+    "prettier-format": "1.0.1"
   },
   "repository": "fisker/write-prettier-file",
   "home": "https://github.com/fisker/write-prettier-file#readme",
