@@ -26,11 +26,12 @@
     "format": "run-p format:*",
     "format:eslint": "yarn lint:eslint --fix",
     "format:markdown": "yarn lint:markdown --fix",
+    "format:package-json": "sort-package-json \"package.json\" \"packages/*/package.json\"",
     "format:prettier": "yarn lint:prettier --write",
-    "format:sort-package-json": "sort-package-json \"package.json\" \"packages/*/package.json\"",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint \"**/*.{js,mjs,vue}\"",
     "lint:markdown": "markdownlint \"**/*.md\" --ignore \"**/node_modules/**\"",
+    "lint:package-json": "yarn run format:package-json --check",
     "lint:prettier": "prettier \"**/*.{css,html,js,json,less,md,scss,ts,vue,yaml,yml}\" --check",
     "release": "run-s clean lint build test format dist",
     "test": "ava",
@@ -40,6 +41,20 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "ava": {
+    "require": "esm",
+    "verbose": true
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": "esm"
   },
   "dependencies": {
     "fs-extra": "8.1.0",
@@ -75,19 +90,5 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "ava": {
-    "verbose": true,
-    "require": "esm"
-  },
-  "home": "https://github.com/fisker/write-prettier-file#readme",
-  "nyc": {
-    "require": "esm",
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "include": [
-      "src/**"
-    ]
-  }
+  "home": "https://github.com/fisker/write-prettier-file#readme"
 }
