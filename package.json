@@ -16,7 +16,9 @@
     "dist"
   ],
   "sideEffects": false,
+  "type": "module",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "scripts": {
     "build": "rollup --config",
     "clean": "run-p clean:*",
@@ -40,6 +42,20 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "ava": {
+    "require": "esm",
+    "verbose": true
+  },
+  "nyc": {
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "require": "esm"
   },
   "dependencies": {
     "fs-extra": "8.1.0",
@@ -75,19 +91,5 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "ava": {
-    "verbose": true,
-    "require": "esm"
-  },
-  "home": "https://github.com/fisker/write-prettier-file#readme",
-  "nyc": {
-    "require": "esm",
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "include": [
-      "src/**"
-    ]
-  }
+  "home": "https://github.com/fisker/write-prettier-file#readme"
 }
