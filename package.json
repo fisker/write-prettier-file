@@ -61,7 +61,7 @@
     "prettier-format": "1.1.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.7.5",
+    "@babel/preset-env": "7.7.6",
     "@commitlint/cli": "8.2.0",
     "@fisker/commitlint-config": "1.1.4",
     "@fisker/eslint-config": "1.5.1",
