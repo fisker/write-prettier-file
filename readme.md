@@ -50,4 +50,4 @@ Sync version.
 
 ## Related
 
-- [prettier-format](prettier-format) run prettier on code.
+- [prettier-format](https://github.com/fisker/prettier-format) run prettier on code.
