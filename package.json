@@ -1,6 +1,6 @@
 {
   "name": "write-prettier-file",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "write prettier formatted file",
   "bugs": {
     "url": "https://github.com/fisker/write-prettier-file/issues"
