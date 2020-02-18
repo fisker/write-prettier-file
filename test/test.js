@@ -3,7 +3,6 @@ import test from 'ava'
 import fs from 'fs'
 import tempy from 'tempy'
 import dedent from 'dedent'
-import pify from 'pify'
 import writePrettierFile from '../src'
 
 async function tester(
