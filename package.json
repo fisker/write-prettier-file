@@ -55,7 +55,6 @@
     ]
   },
   "dependencies": {
-    "pify": "5.0.0",
     "prettier-format": "1.1.1"
   },
   "devDependencies": {
