@@ -1,18 +1,31 @@
 import path from 'path'
-import fs from 'fs-extra'
+import fsModule from 'fs'
 import format from 'prettier-format'
+import pify from 'pify'
+
+// TODO [engine>=10]: use fs.promises
+const fs = {
+  // eslint-disable-next-line node/no-unsupported-features/node-builtins
+  mkdir: (fsModule.promises && fsModule.promises.mkdir) || pify(fsModule.mkdir),
+  writeFile:
+    // eslint-disable-next-line node/no-unsupported-features/node-builtins
+    (fsModule.promises && fsModule.promises.writeFile) ||
+    pify(fsModule.writeFile),
+  mkdirSync: fsModule.mkdirSync,
+  writeFileSync: fsModule.writeFileSync,
+}
 
 const defaultOptions = {
   resolveConfig: true,
 }
 
 async function writeFile(file, data, options) {
-  await fs.ensureDir(path.dirname(file))
+  await fs.mkdir(path.dirname(file), {recursive: true})
   return fs.writeFile(file, data, options)
 }
 
 function writeFileSync(file, data, options) {
-  fs.ensureDirSync(path.dirname(file))
+  fs.mkdirSync(path.dirname(file), {recursive: true})
   return fs.writeFileSync(file, data, options)
 }
 

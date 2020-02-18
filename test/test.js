@@ -1,9 +1,13 @@
 import path from 'path'
 import test from 'ava'
-import fs from 'fs-extra'
+import fsModule from 'fs'
 import tempy from 'tempy'
 import dedent from 'dedent'
+import pify from 'pify'
 import writePrettierFile from '../src'
+
+// eslint-disable-next-line node/no-unsupported-features/node-builtins
+const fs = fsModule.promises || pify(fsModule)
 
 async function tester(
   t,
@@ -40,7 +44,7 @@ test('main', async t => {
 test('options.resolveConfig', async t => {
   const directory = path.join(tempy.directory(), 'foo')
   const configFile = path.join(directory, 'prettier.config.js')
-  await fs.ensureDir(directory)
+  await fs.mkdir(directory, {recursive: true})
   await fs.writeFile(
     configFile,
     dedent`
