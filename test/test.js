@@ -25,7 +25,7 @@ async function tester(
   t.is(actual, `${expected}\n`)
 }
 
-test('main', async t => {
+test('main', async (t) => {
   await tester(t, {
     input: dedent`
       var foo
@@ -37,7 +37,7 @@ test('main', async t => {
   })
 })
 
-test('options.resolveConfig', async t => {
+test('options.resolveConfig', async (t) => {
   const directory = path.join(tempy.directory(), 'foo')
   const configFile = path.join(directory, 'prettier.config.js')
   await fs.promises.mkdir(directory, {recursive: true})
