@@ -82,7 +82,7 @@
     "prettier": "2.1.2",
     "rollup": "2.26.11",
     "rollup-plugin-babel": "4.4.0",
-    "sort-package-json": "1.44.0",
+    "sort-package-json": "1.46.0",
     "tempy": "0.7.0"
   },
   "publishConfig": {
