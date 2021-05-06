@@ -1,9 +1,9 @@
-import path from 'path'
+import path from 'node:path'
+import fs from 'node:fs'
 import test from 'ava'
-import fs from 'fs'
 import tempy from 'tempy'
 import dedent from 'dedent'
-import writePrettierFile from '../src'
+import writePrettierFile from '../index.js'
 
 async function tester(
   t,
