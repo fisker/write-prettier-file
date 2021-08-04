@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "prettier-format": "3.0.2"
+    "prettier-format": "3.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
