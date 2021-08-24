@@ -1,5 +1,6 @@
 import path from 'node:path'
 import fs from 'node:fs'
+import url from 'node:url'
 import test from 'ava'
 import tempy from 'tempy'
 import dedent from 'dedent'
@@ -76,4 +77,24 @@ test('options.resolveConfig', async (t) => {
       resolveConfig: false,
     },
   })
+})
+
+test('Should support `URL`', async (t) => {
+  const code = dedent`
+    var foo =
+    "bar"
+  `
+
+  const directory = tempy.directory()
+  const asyncFile = path.join(directory, 'async.js')
+  await writePrettierFile(url.pathToFileURL(asyncFile), code)
+
+  const actualAsync = await fs.promises.readFile(asyncFile, 'utf8')
+  t.is(actualAsync, 'var foo = "bar";\n')
+
+  const syncFile = path.join(directory, 'sync.js')
+  writePrettierFile.sync(url.pathToFileURL(syncFile), code)
+
+  const actualSync = await fs.promises.readFile(syncFile, 'utf8')
+  t.is(actualAsync, actualSync)
 })

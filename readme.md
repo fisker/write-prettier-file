@@ -36,7 +36,7 @@ writePrettierFile('example.js', `hello('world');`)
 
 #### file
 
-Type: `string`
+Type: `string | URL`
 
 Path to file.
 
