@@ -8,7 +8,7 @@ import writePrettierFile from '../index.js'
 
 async function tester(
   t,
-  {input, expected, options, directory = path.join(tempy.directory(), 'foo')}
+  {input, expected, options, directory = path.join(tempy.directory(), 'foo')},
 ) {
   // async
   const file = path.join(directory, 'async.js')
@@ -48,7 +48,7 @@ test('options.resolveConfig', async (t) => {
     module.exports = {
       singleQuote: true,
     }
-  `
+  `,
   )
 
   await tester(t, {
