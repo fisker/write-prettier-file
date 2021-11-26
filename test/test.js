@@ -45,10 +45,10 @@ test('options.resolveConfig', async (t) => {
   await fs.promises.writeFile(
     configFile,
     dedent`
-    module.exports = {
-      singleQuote: true,
-    }
-  `,
+      module.exports = {
+        singleQuote: true,
+      }
+    `,
   )
 
   await tester(t, {
