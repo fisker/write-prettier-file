@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "prettier-format": "3.0.4",
-    "url-or-path": "1.0.4"
+    "url-or-path": "2.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "16.2.3",
