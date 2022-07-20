@@ -63,7 +63,7 @@
     "@fisker/prettier-config": "5.0.6",
     "ava": "4.2.0",
     "dedent": "0.7.0",
-    "del-cli": "4.0.1",
+    "del-cli": "5.0.0",
     "eslint": "8.13.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.8",
