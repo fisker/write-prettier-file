@@ -64,7 +64,7 @@
     "ava": "4.2.0",
     "dedent": "0.7.0",
     "del-cli": "4.0.1",
-    "eslint": "8.13.0",
+    "eslint": "8.29.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.8",
     "markdownlint-cli": "0.31.1",
