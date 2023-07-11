@@ -25,9 +25,9 @@ yarn add write-prettier-file
 ## Ustage
 
 ```js
-const writePrettierFile = require('write-prettier-file')
+import writePrettierFile from 'write-prettier-file'
 
-writePrettierFile('example.js', `hello('world');`)
+await writePrettierFile('example.js', `hello('world');`)
 ```
 
 ## API
@@ -57,10 +57,6 @@ any value [`prettier-format`](https://github.com/fisker/prettier-format) takes
 Type: `boolean`
 
 Set to `false` to prevent load config.
-
-### writePrettierFile.sync(file, data, options?)
-
-Sync version.
 
 ## Related
 
