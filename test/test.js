@@ -3,7 +3,7 @@ import fs from 'node:fs'
 import url from 'node:url'
 import test from 'ava'
 import {temporaryDirectory as createTemporaryDirectory} from 'tempy'
-import dedent from 'dedent'
+import {outdent} from 'outdent'
 import writePrettierFile from '../index.js'
 
 async function tester(
@@ -26,11 +26,11 @@ async function tester(
 
 test('main', async (t) => {
   await tester(t, {
-    input: dedent`
+    input: outdent`
       var foo
                   = 'bar'
     `,
-    expected: dedent`
+    expected: outdent`
       var foo = "bar";
     `,
   })
@@ -42,7 +42,7 @@ test('options.resolveConfig', async (t) => {
   await fs.promises.mkdir(directory, {recursive: true})
   await fs.promises.writeFile(
     configFile,
-    dedent`
+    outdent`
       module.exports = {
         singleQuote: true,
       }
@@ -50,11 +50,11 @@ test('options.resolveConfig', async (t) => {
   )
 
   await tester(t, {
-    input: dedent`
+    input: outdent`
       // this should be singleQuoted
       var foo = 'bar'
     `,
-    expected: dedent`
+    expected: outdent`
       // this should be singleQuoted
       var foo = 'bar';
     `,
@@ -62,11 +62,11 @@ test('options.resolveConfig', async (t) => {
   })
 
   await tester(t, {
-    input: dedent`
+    input: outdent`
       // this should be doubleQuoted
       var foo = 'bar'
     `,
-    expected: dedent`
+    expected: outdent`
       // this should be doubleQuoted
       var foo = "bar";
     `,
@@ -78,7 +78,7 @@ test('options.resolveConfig', async (t) => {
 })
 
 test('Should support `URL`', async (t) => {
-  const code = dedent`
+  const code = outdent`
     var foo =
     "bar"
   `
