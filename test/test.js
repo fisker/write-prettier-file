@@ -73,6 +73,7 @@ test('options.resolveConfig', async (t) => {
     directory,
     options: {
       resolveConfig: false,
+      parser: 'babel',
     },
   })
 })
