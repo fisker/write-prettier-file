@@ -73,6 +73,7 @@ test('options.resolveConfig', async (t) => {
     directory,
     options: {
       resolveConfig: false,
+      parser: 'babel',
     },
   })
 })
@@ -84,7 +85,7 @@ test('Should support `URL`', async (t) => {
   `
 
   const directory = createTemporaryDirectory()
-  const asyncFile = path.join(directory, 'async.js')
+  const asyncFile = path.join(directory, 'file.js')
   await writePrettierFile(url.pathToFileURL(asyncFile), code)
 
   const actualAsync = await fs.promises.readFile(asyncFile, 'utf8')
